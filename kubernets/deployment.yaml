@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-harness-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: python-harness
+  template:
+    metadata:
+      labels:
+        app: python-harness
+    spec:
+      containers:
+      - name: python-harness
+        image: dockerhub_user/python-harness:latest
+        ports:
+        - containerPort: 5000
